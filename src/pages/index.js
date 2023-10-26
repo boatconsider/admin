@@ -57,6 +57,7 @@ export default function Home() {
   return (
     <div className="h-[100vh] bg-slate-200">
       <Headder />
+      <hi></hi>
       <div className=" w-full h-[1200px] mt-2  ">
         <div className="grid grid-cols-[800px_minmax(0px,_1fr)] grid-row-[800px_minmax(200px,_1fr)] gap-x-2 gap-y-2 max-[650px]:grid-row-1 max-[650px]:grid-cols-1 max-[820px]:grid-cols-[450px_minmax(0px,_1fr)] max-[1024px]:grid-cols-[500px_minmax(0px,_1fr)]">
           <div className="w-full bg-[#fff] h-[550px] ">

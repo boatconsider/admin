@@ -3,12 +3,12 @@ import axios from "axios";
 import Headder from "./components/Headder";
 import Footer from "./components/Footer";
 
-export default function Homepage() {
+export default function cut() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("https://node-api-u9ix.onrender.com/getfam")
+    axios.get("https://node-api-u9ix.onrender.com/getdel")
       .then(response => {
         const results = response.data.results; // Access 'results' array
         console.log(results); // Log the 'results' array
@@ -45,8 +45,6 @@ export default function Homepage() {
                   <th className="px-4 py-2">passsell</th>
                   <th className="px-4 py-2">cardcode</th>
                   <th className="px-4 py-2">cardname</th>
-                  <th className="px-4 py-2">oldfam</th>
-                  <th className="px-4 py-2">newfam</th>
                   <th className="px-4 py-2">problem</th>
                 </tr>
               </thead>
@@ -56,8 +54,6 @@ export default function Homepage() {
                     <td className="border px-4 py-2">{item.passsell}</td>
                     <td className="border px-4 py-2">{item.cardcode}</td>
                     <td className="border px-4 py-2">{item.cardname}</td>
-                    <td className="border px-4 py-2">{item.oldfam}</td>
-                    <td className="border px-4 py-2">{item.newfam}</td>
                     <td className="border px-4 py-2">{item.problem}</td>
                     <td className="border px-4 py-2">
                       {/* You can add content here */}

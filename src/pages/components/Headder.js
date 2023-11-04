@@ -36,14 +36,14 @@ export default function Headder() {
      
               <button
                 className="bg-white text-[#333] hover:bg-[#333] hover:text-[#fff] p-1 mr-2 rounded-md flex items-center outline-none text-sm"
-                onClick={() => router.push("/sdo")}
+                onClick={() => router.push("/cut")}
               >
               
               แจ้งปัญหา SDO
               </button>
               <button
                 className="bg-white text-[#333] hover:bg-[#333] hover:text-[#fff] p-1 mr-2 rounded-md flex items-center outline-none text-sm"
-                onClick={() => router.push("/pdcdc")}
+                onClick={() => router.push("/edit")}
               >
              
              แจ้งปัญหา PDC/DC

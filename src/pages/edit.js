@@ -17,7 +17,7 @@ export default function edit() {
       .then(response => {
         const results = response.data.results;
         console.log(results);
-        setData(results);
+        setData(results.reverse());
         setLoading(false);
       })
       .catch(error => {

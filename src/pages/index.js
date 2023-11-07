@@ -1,15 +1,18 @@
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import Headder from "./components/Headder";
-import Footer from "./components/Footer";
 import { useState } from "react";
+
 export default function Home() {
   const MySwal = withReactContent(Swal);
   const [inputs, setInputs] = useState({});
   const [validationErrors, setValidationErrors] = useState({});
   const router = useRouter();
+
+
+
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -42,11 +45,31 @@ export default function Home() {
       return;
     }
 
+    const loadingSwal = Swal.fire({
+      title: 'กำลังโหลด...',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      },
+      imageUrl: 'https://www.mindphp.com/images/articles/202001/IT_Support.jpg',
+      imageWidth: 300,
+      imageHeight: 200,
+      allowOutsideClick: false,
+      showConfirmButton: false,
+      onBeforeOpen: () => {
+        Swal.showLoading();
+      }
+    });
+
     axios
       .post("https://node-api-u9ix.onrender.com/login", inputs)
       .then((response) => {
         const result = response.data;
         console.log(result);
+
+        loadingSwal.close();
 
         // Handle login success here
         if (result.status === "ok") {
@@ -54,7 +77,7 @@ export default function Home() {
             html: <i>{result.message}</i>,
             icon: "success",
           }).then(() => {
-            router.push("/homepage");
+            router.push("/move");
           });
         } else {
           MySwal.fire({
@@ -65,14 +88,13 @@ export default function Home() {
       })
       .catch((error) => {
         console.log("Error:", error.message);
+        loadingSwal.close();
         // Handle the error here
       });
-
-    console.log(inputs);
   };
+
   return (
     <div>
-
       <div
         className="flex justify-center w-full h-[100vh]  bg-[#fff] bg-cover bg-center"
         style={{
@@ -130,10 +152,6 @@ export default function Home() {
             </div>
           </form>
         </div>
-      </div>
-
-      <div>
-        <Footer />
       </div>
     </div>
   );

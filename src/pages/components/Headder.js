@@ -23,7 +23,7 @@ export default function Headder() {
         <div className="flex flex-row items-center ml-3 text-[#fff] text-xl justify-between">
           <div
             className="flex flex-row items-center cursor-pointer text-white"
-            onClick={() => router.push("/")}
+            onClick={() => router.push("/move")}
           >
     
             <h1 className="pl-1">RSM</h1>
@@ -36,24 +36,24 @@ export default function Headder() {
      
               <button
                 className="bg-white text-[#333] hover:bg-[#333] hover:text-[#fff] p-1 mr-2 rounded-md flex items-center outline-none text-sm"
-                onClick={() => router.push("/cut")}
+                onClick={() => router.push("/move")}
               >
               
-              แจ้งปัญหา SDO
+              ย้ายแฟ้มย้ายร้านให้เซลล์อีกคน
+              </button>
+              <button
+                className="bg-white text-[#333] hover:bg-[#333] hover:text-[#fff] p-1 mr-2 rounded-md flex items-center outline-none text-sm"
+                onClick={() => router.push("/cut")}
+              >
+             
+              ตัดร้าน
               </button>
               <button
                 className="bg-white text-[#333] hover:bg-[#333] hover:text-[#fff] p-1 mr-2 rounded-md flex items-center outline-none text-sm"
                 onClick={() => router.push("/edit")}
               >
-             
-             แจ้งปัญหา PDC/DC
-              </button>
-              <button
-                className="bg-white text-[#333] hover:bg-[#333] hover:text-[#fff] p-1 mr-2 rounded-md flex items-center outline-none text-sm"
-                onClick={() => router.push("/van")}
-              >
 
-              แจ้งปัญหา VANSEll
+              แก้ชื่อร้านค้าหรือเลขที่เสียภาษี
               </button>
               <button
                 className="bg-white text-[#333] hover:bg-[#333] hover:text-[#fff] p-1 mr-2 rounded-md flex items-center outline-none text-sm"
@@ -71,21 +71,21 @@ export default function Headder() {
         
           <button
             className="mt-3 hover:text-[#06b6d4] flex items-center"
-            onClick={() => router.push("/sdo")}
+            onClick={() => router.push("/move")}
           >
-      แจ้งปัญหา SDO
+   ย้ายแฟ้มย้ายร้านให้เซลล์อีกคน
           </button>
           <button
             className="mt-3 hover:text-[#06b6d4] flex items-center"
-            onClick={() => router.push("/pdcdc")}
+            onClick={() => router.push("/cut")}
           >
-                    แจ้งปัญหา PDC/DC
+                    ตัดร้าน
           </button>
           <button
             className="mt-3 hover:text-[#06b6d4] flex items-center"
-            onClick={() => router.push("/van")}
+            onClick={() => router.push("/edit")}
           >
-         แจ้งปัญหา VANSEll
+          แก้ชื่อร้านค้าหรือเลขที่เสียภาษี
           </button>
           <button
                 className="mt-3 hover:text-[#06b6d4] flex items-center"

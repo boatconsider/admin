@@ -1,18 +1,21 @@
+
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Table, Button, Space } from 'antd';
+ 
 import Headder from "./components/Headder";
 import Footer from "./components/Footer";
 
-export default function cut() {
+export default function Cut() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios.get("https://node-api-u9ix.onrender.com/getdel")
       .then(response => {
-        const results = response.data.results; // Access 'results' array
-        console.log(results); // Log the 'results' array
-        setData(results); // Set 'results' to 'data'
+        const results = response.data.results;
+        console.log(results);
+        setData(results);
         setLoading(false);
       })
       .catch(error => {
@@ -20,48 +23,46 @@ export default function cut() {
         setLoading(false);
       });
   }, []);
-  
 
-  const arrayBufferToBase64 = (buffer) => {
-    const binary = new Uint8Array(buffer);
-    const base64 = btoa(String.fromCharCode(...binary));
-    return `data:image/jpeg;base64,${base64}`;
-  };
+  const columns = [
+    {
+      title: 'รหัสเซลล์',
+      dataIndex: 'passsell',
+      key: 'passsell',
+    },
+    {
+      title: 'รหัสร้านค้า',
+      dataIndex: 'cardcode',
+      key: 'cardcode',
+    },
+    {
+      title: 'ชื่อร้านค้า',
+      dataIndex: 'cardname',
+      key: 'cardname',
+    },
+    {
+      title: 'หมายเหตุ',
+      dataIndex: 'problem',
+      key: 'problem',
+    },
+  ];
+
+  const isDataSmall = data.length < 5;
 
   return (
     <div className="h-auto bg-[#f2f3f5]">
       <Headder />
       <div className="flex justify-center items-center">
-        <div className={`w-[1300px] ${loading ? 'h-[600px]' : 'h-auto'} bg-white mt-4 rounded-lg p-4`}>
-          <h1 className="text-3xl font-bold mb-4">Data Table</h1>
+        <div className={`w-[1300px] max-[540px]:w-[360px] bg-white mt-4 rounded-lg p-4 ${isDataSmall ? 'h-[600px]' : 'h-auto'}`}>
+          <h1 className="text-3xl font-bold mb-4">ตารางการตัดร้าน</h1>
           {loading ? (
             <div className="text-center">
               Loading...
             </div>
           ) : (
-            <table className="table-auto">
-              <thead>
-                <tr>
-                  <th className="px-4 py-2">passsell</th>
-                  <th className="px-4 py-2">cardcode</th>
-                  <th className="px-4 py-2">cardname</th>
-                  <th className="px-4 py-2">problem</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.map((item, index) => (
-                  <tr key={index}>
-                    <td className="border px-4 py-2">{item.passsell}</td>
-                    <td className="border px-4 py-2">{item.cardcode}</td>
-                    <td className="border px-4 py-2">{item.cardname}</td>
-                    <td className="border px-4 py-2">{item.problem}</td>
-                    <td className="border px-4 py-2">
-                      {/* You can add content here */}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <div className="overflow-x-auto">
+              <Table columns={columns} dataSource={data} />
+            </div>
           )}
         </div>
       </div>

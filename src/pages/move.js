@@ -1,6 +1,3 @@
-
-
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Table, Button, Space } from 'antd';
@@ -8,12 +5,12 @@ import { Table, Button, Space } from 'antd';
 import Headder from "./components/Headder";
 import Footer from "./components/Footer";
 
-export default function edit() {
+export default function move() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("https://node-api-u9ix.onrender.com/getedit")
+    axios.get("https://node-api-u9ix.onrender.com/getfam")
       .then(response => {
         const results = response.data.results;
         console.log(results);
@@ -43,14 +40,14 @@ export default function edit() {
       key: 'cardname',
     },
     {
-      title: 'ชื่อร้านค้าใหม่',
-      dataIndex: 'newcardname',
-      key: 'newcardname',
+      title: 'แฟ้มเก่า',
+      dataIndex: 'oldfam',
+      key: 'oldfam',
     },
     {
-      title: 'เลขที่่ผู่้เสียภาษี',
-      dataIndex: 'tax',
-      key: 'tax',
+      title: 'แฟ้มใหม่',
+      dataIndex: 'newfam',
+      key: 'newfam',
     },
     {
       title: 'หมายเหตุ',
@@ -66,7 +63,7 @@ export default function edit() {
       <Headder />
       <div className="flex justify-center items-center">
         <div className={`w-[1300px] max-[540px]:w-[360px] bg-white mt-4 rounded-lg p-4 ${isDataSmall ? 'h-[600px]' : 'h-auto'}`}>
-          <h1 className="text-3xl font-bold mb-4">ตารางการตัดร้าน</h1>
+          <h1 className="text-3xl font-bold mb-4">ตารางการย้ายแฟ้ม</h1>
           {loading ? (
             <div className="text-center">
               Loading...

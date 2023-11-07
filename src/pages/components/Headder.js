@@ -55,13 +55,7 @@ export default function Headder() {
 
               แก้ชื่อร้านค้าหรือเลขที่เสียภาษี
               </button>
-              <button
-                className="bg-white text-[#333] hover:bg-[#333] hover:text-[#fff] p-1 mr-2 rounded-md flex items-center outline-none text-sm"
-                onClick={() => router.push("/information")}
-              >
-
-              คู่มือการใช้งาน
-              </button>
+   
             </div>
           </div>
         </div>
@@ -87,13 +81,7 @@ export default function Headder() {
           >
           แก้ชื่อร้านค้าหรือเลขที่เสียภาษี
           </button>
-          <button
-                className="mt-3 hover:text-[#06b6d4] flex items-center"
-                onClick={() => router.push("/information")}
-              >
 
-              คู่มือการใช้งาน
-              </button>
         </div>
       )}
     </div>
